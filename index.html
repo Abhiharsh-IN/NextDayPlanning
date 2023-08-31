@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Input to Excel</title>
+</head>
+<body>
+   <h1>Today Progress and Next Day Planning </h1>
+    <form id="input-form">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date"><br><br>
+        
+        <table id="today-table">
+            <thead>
+                <tr>
+                    <th>SN</th>
+                    <th>Description</th>
+                    <th>Qty- Planned</th>
+                    <th>Qty- Done</th>
+                    <th>Remark</th>
+                </tr>
+                <tr>
+                    <th>A</th>
+                    <th>Concrete Work</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>Today:-</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><input type="text" name="description[1]"></td>
+                    <td><input type="text" name="planned[1]"></td>
+                    <td><input type="text" name="done[1]"></td>
+                    <td><input type="text" name="remark[1]"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" id="add-row">Add Row</button>
+        <button type="button" id="delete-row">Delete Row</button><br><br>
+        
+        <table id="nextDay-table">
+        <thead>
+                <tr>
+                    <th></th>
+                    <th>Next Day Planning:-</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><input type="text" name="description[1]"></td>
+                    <td><input type="text" name="planned[1]"></td>
+                    <td><input type="text" name="done[1]"></td>
+                    <td><input type="text" name="remark[1]"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" id="add-row">Add Row</button>
+        <button type="button" id="delete-row">Delete Row</button><br><br>
+        <table id="pileWork-table">
+            <thead>
+                <tr>
+                <th>B</th>
+                <th>Pile Work</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><input type="text" name="description[1]"></td>
+                    <td><input type="text" name="planned[1]"></td>
+                    <td><input type="text" name="done[1]"></td>
+                    <td><input type="text" name="remark[1]"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" id="add-row">Add Row</button>
+        <button type="button" id="delete-row">Delete Row</button><br><br>
+        
+
+        <button type="button" id="generate-excel">Generate Excel</button>
+        
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
