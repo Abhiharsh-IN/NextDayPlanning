@@ -1,4 +1,4 @@
-document.querySelectorAll('.add-row').forEach(button => {
+document.querySelectorAll('#add-row').forEach(button => {
     button.addEventListener('click', function() {
         const tableId = this.getAttribute('data-table');
         const table = document.getElementById(tableId).getElementsByTagName('tbody')[0];
@@ -17,7 +17,7 @@ document.querySelectorAll('.add-row').forEach(button => {
     });
 });
 
-document.querySelectorAll('.delete-row').forEach(button => {
+document.querySelectorAll('#delete-row').forEach(button => {
     button.addEventListener('click', function() {
         const tableId = this.getAttribute('data-table');
         const table = document.getElementById(tableId).getElementsByTagName('tbody')[0];
