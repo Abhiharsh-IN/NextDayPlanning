@@ -1,38 +1,55 @@
-document.querySelectorAll('#add-row').forEach(button => {
-    button.addEventListener('click', function() {
-        const tableId = this.getAttribute('data-table');
-        const table = document.getElementById(tableId).getElementsByTagName('tbody')[0];
-        const newRow = table.insertRow(table.rows.length);
-        
-        const snCell = newRow.insertCell(0);
-        snCell.textContent = table.rows.length;
-        
-        for (let i = 1; i < 5; i++) {
-            const cell = newRow.insertCell(i);
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.name = `${tableId}-row${table.rows.length}[col${i}]`;
-            cell.appendChild(input);
-        }
-    });
+// Get the input form
+const inputForm = document.getElementById('input-form');
+
+// Get the today table
+const todayTable = document.getElementById('today-table');
+
+// Get the nextDay table
+const nextDayTable = document.getElementById('nextDay-table');
+
+// Get the pileWork table
+const pileWorkTable = document.getElementById('pileWork-table');
+
+// Get the add row button
+const addRowButton = document.getElementById('add-row');
+
+// Get the delete row button
+const deleteRowButton = document.getElementById('delete-row');
+
+// Get the generate excel button
+const generateExcelButton = document.getElementById('generate-excel');
+
+// Add row event handler
+addRowButton.addEventListener('click', function() {
+    const numberOfRows = todayTable.rows.length;
+    const newRow = todayTable.insertRow(numberOfRows);
+
+    const snCell = newRow.insertCell(0);
+    snCell.textContent = numberOfRows + 1;
+
+    for (let i = 1; i < 5; i++) {
+        const cell = newRow.insertCell(i);
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.name = `description[${numberOfRows}]`;
+        cell.appendChild(input);
+    }
 });
 
-document.querySelectorAll('#delete-row').forEach(button => {
-    button.addEventListener('click', function() {
-        const tableId = this.getAttribute('data-table');
-        const table = document.getElementById(tableId).getElementsByTagName('tbody')[0];
-        
-        if (table.rows.length > 1) {
-            table.deleteRow(table.rows.length - 1);
-        }
-    });
+// Delete row event handler
+deleteRowButton.addEventListener('click', function() {
+    const selectedRow = todayTable.querySelector('.selected');
+    
+    if (selectedRow) {
+        selectedRow.remove();
+    }
 });
 
-document.getElementById('generate-excel').addEventListener('click', function() {
+// Generate excel event handler
+generateExcelButton.addEventListener('click', function() {
     const workbook = XLSX.utils.book_new();
     const sheetData = [];
-    
-    // Loop through each table
+
     const tableIds = ['today-table', 'nextDay-table', 'pileWork-table'];
     tableIds.forEach(tableId => {
         const table = document.getElementById(tableId);
